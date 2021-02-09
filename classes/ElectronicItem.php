@@ -23,7 +23,7 @@ abstract class ElectronicItem {
     public $wired;
 
     /**
-     * @var array
+     * @var ElectronicItems
      */
     protected $extras;
 
@@ -136,7 +136,7 @@ abstract class ElectronicItem {
      */
     public function getExtras(): array
     {
-        return $this->extras;
+        return $this->extras->getSortedItems();
     }
 
     /**
@@ -151,11 +151,7 @@ abstract class ElectronicItem {
      * @return float
      */
     function getPrice() {
-        $tempPrice = 0;
-        foreach ($this->getExtras() as $extra) {
-            $tempPrice += floatval($extra->getPrice());
-        }
-        return ($tempPrice + floatval($this->price));
+        return $this->price;
     }
 
     /**
@@ -195,7 +191,7 @@ abstract class ElectronicItem {
      */
     public function setExtras(array $extras)
     {
-        $this->extras = $extras;
+        $this->extras = new ElectronicItems($extras);
     }
 
     /**
@@ -232,4 +228,17 @@ abstract class ElectronicItem {
      * @return bool
      */
     abstract function canBeExtra();
+
+    /**
+     * Get the total price of the item and its extras
+     * @return float
+     */
+    function getPriceTotal() {
+        $tempPrice = 0.0;
+        foreach ($this->getExtras() as $extra) {
+            $tempPrice += floatval($extra->getPriceTotal());
+        }
+        return ($tempPrice + floatval($this->price));
+    }
+
 }

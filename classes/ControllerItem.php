@@ -29,4 +29,8 @@ class ControllerItem extends ElectronicItem {
     function canBeExtra() {
         return true;
     }
+
+    function getWired() {
+        return ($this->wired == true ? "remote" : "wired");
+    }
 }

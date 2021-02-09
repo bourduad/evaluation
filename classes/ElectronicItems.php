@@ -21,10 +21,27 @@ class ElectronicItems {
     /**
      * @return array
      */
+    public function getItems(): array
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param array $items
+     */
+    public function setItems(array $items)
+    {
+        $this->items = $items;
+    }
+
+
+    /**
+     * @return array
+     */
     public function getSortedItems() {
         $sorted = array();
         foreach ($this->items as $item) {
-            $sorted[($item->getPrice() * 100)] = $item;
+            $sorted[($item->getPriceTotal() * 100)] = $item;
         }
 
         ksort($sorted, SORT_NUMERIC);
@@ -49,10 +66,10 @@ class ElectronicItems {
      * Return the total price of the list of items
      * @return float
      */
-    public function getPrice() {
+    public function getPriceTotal() {
         $price = 0.0;
         foreach ($this->items as $item) {
-            $price += floatval($item->getPrice());
+            $price += floatval($item->getPriceTotal());
         }
 
         return $price;

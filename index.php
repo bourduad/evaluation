@@ -26,14 +26,17 @@ $list = new ElectronicItems(array(
 
 echo "Question 1: List of products with total price:<br/><br/>";
 foreach ($list->getSortedItems() as $item) {
-    echo "type: " . $item->getType() . " Price: " . $item->getPrice() . "$<br/>";
+    echo "type: " . $item->getType() . " Price: " . $item->getPriceTotal() . "$<br/>";
 }
-echo "Total price: " . $list->getPrice() . "$<br/>";
+echo "Total price: " . $list->getPriceTotal() . "$<br/>";
 
 echo "<br/>Question 2 : price of the console with the controllers<br/>";
 
 foreach ($list->getItemsByType("console") as $console) {
-    echo $console->getPrice() . "$<br/>";
+    echo $console->getType() . " " . $console->getPrice() . "$<br/>";
+    foreach($console->getExtras() as $extra) {
+        echo $extra->getType() . " " . $extra->getWired() . " " . $extra->getPrice() . "$<br/>";
+    }
 }
 
 die("<br/>Done<br/>");
