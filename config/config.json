@@ -1,9 +1,8 @@
 {
   "_comment": "Configuration file used throughout opalAdmin",
 
-
   "pathConfig": {
     "_comment": "Leading slash REQUIRED!",
-    "abs_path": "/xampp/htdocs/tracktik/"
+    "abs_path": "/xampp/htdocs/evaluation/"
   }
 }

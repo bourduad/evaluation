@@ -1,6 +1,10 @@
 # Evaluation
 This is the deposit for the evaluations
 
+# Installation and configuration
+Simply clone and open the config.json to change the path. I am aware a config.json is totally not secured especially not present in the git ignore, but for the sake of the clarity and speed of work, I've proceeded this way this time.
+
+#Explanations
 For this test, I've decided to concentrate my efforts on the declaration and the constructs of the classes. The operations for modifying the data after creation was not made, especially for the validation part.
 
 I've decided to avoid at most possible the creation of exception classes with the children of ElectronicItem. That is why there is a method name canBeExtra(). Based on my experience, exception cases tend to cause unforeseen problems and can complicate their treatment.
